@@ -1,6 +1,10 @@
 'use client'
 import React, {useState, useEffect} from 'react'
 import { YoutubeVideo, YoutubeResponse } from '../types/Youtube'; 
+import { useDispatch, useSelector } from 'react-redux';
+
+import { fetchYoutubeData  } from '../../../Redux/features/slice';
+import { RootState } from '../../../Redux/store'; // Certifique-se de que o caminho está correto
 
 
 //import Image from 'next/image'
@@ -8,39 +12,28 @@ import { YoutubeVideo, YoutubeResponse } from '../types/Youtube';
 
 export const Main = () => {
     
-  const url = 'https://www.googleapis.com/youtube/v3/videos'
-  const varName = 'YOUTUBE_API_KEY'
-  const apiKey = process.env.YOUTUBE_API_KEY;
-  
+
+
+
   const [youtube, setYoutube] = useState([]);
+
+  //const youtubeVideos = dataTest?.items || [];
+  //console.log(youtubeVideos);
+
+  const dispatch = useDispatch();
+
+
+  
+  const youtubeData = useSelector((state: RootState) => state.youtube.data);
   
   useEffect(() => {
-    const youtubeApi = async () => {
-      const response = await fetch(`${url}?id=TJetxzGpbfA&key=${apiKey}&part=snippet,contentDetails,statistics,status`);
-      
-          //
-          if (!response.ok){
-            throw new Error(`HTTP error! status: ${response.status}`)             
-          }
-          
-          const data = await response.json()
-          
-          setYoutube(
-           
-              data.items,
-            
-            );
-            
-          }
-          
-          youtubeApi();
-
-  }, [])
+    dispatch(fetchYoutubeData()); // Substitua pela chave correta
+  }, [dispatch]);
   
   return (
     <main>
       {
-        youtube.map((video: YoutubeVideo) => {
+        youtubeData.map((video: YoutubeVideo) => {
           return(
             <div
             key={video.snippet.title}

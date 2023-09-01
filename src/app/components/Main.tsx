@@ -17,9 +17,6 @@ export const Main = () => {
 
   const [youtube, setYoutube] = useState([]);
 
-  //const youtubeVideos = dataTest?.items || [];
-  //console.log(youtubeVideos);
-
   const dispatch = useDispatch();
 
 

@@ -1,16 +1,27 @@
+'use client'
 import React from 'react'
 import { ImMenu } from 'react-icons/im';
 import { BsSearch, BsCameraVideo } from 'react-icons/bs';
 import Image from 'next/image'
+import { RootState } from '../../../Redux/store'; // Certifique-se de que o caminho está correto
+import { useSelector,useDispatch } from 'react-redux';
+import { changeBoolean } from '../../../Redux/features/sidebarSlice';
 
 export const Header = () => {
 
-
+  const dispatch = useDispatch();
+  
+  // Função para alternar o estado do sidebar
+  const toggleSidebar = () => {
+    dispatch(changeBoolean());
+  };
+  
   return (
     <header
     className='bg-[#0f0f0f] p-2 flex flex-row items-center gap-5'
     >
         <button
+        onClick={toggleSidebar}
         >
 
         <ImMenu

@@ -2,9 +2,9 @@
 import React, {useState, useEffect} from 'react'
 import { YoutubeVideo, YoutubeResponse } from '../types/Youtube'; 
 import { useDispatch, useSelector } from 'react-redux';
-
 import { fetchYoutubeData  } from '../../../Redux/features/slice';
 import { RootState } from '../../../Redux/store'; // Certifique-se de que o caminho está correto
+
 
 
 //import Image from 'next/image'
@@ -12,9 +12,6 @@ import { RootState } from '../../../Redux/store'; // Certifique-se de que o cami
 
 export const Main = () => {
     
-
-
-
   const [youtube, setYoutube] = useState([]);
 
   const dispatch = useDispatch();

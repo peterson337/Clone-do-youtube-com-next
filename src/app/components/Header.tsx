@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { RootState } from '../../../Redux/store'; // Certifique-se de que o caminho está correto
 import { useSelector,useDispatch } from 'react-redux';
 import { changeBoolean } from '../../../Redux/features/sidebarSlice';
+import Link from 'next/link'
 
 export const Header = () => {
 
@@ -30,7 +31,10 @@ export const Header = () => {
         />
         </button>
 
-        <svg className="w-28  md:w-32" viewBox="0 0 90 20" focusable="false">
+        <Link href="/" >
+        <svg className="w-28  md:w-32" viewBox="0 0 90 20" focusable="false"
+            
+        >
         <svg className="" viewBox="0 0 90 20"
          preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
     <g
@@ -80,6 +84,9 @@ export const Header = () => {
     </g>
   </svg>
         </svg>
+
+        </Link>
+
 
        <div
        className=' flex items-center relative'

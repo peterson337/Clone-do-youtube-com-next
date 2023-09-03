@@ -5,7 +5,7 @@ export const fetchYoutubeData = createAsyncThunk(
   async () => {
     const url = 'https://www.googleapis.com/youtube/v3/videos';
     const apiKey = process.env.YOUTUBE_API_KEY;
-    const response = await fetch(`${url}?id=TJetxzGpbfA&key=${apiKey}&part=snippet,contentDetails,statistics,status`);
+    const response = await fetch(`${url}?id=TJetxzGpbfA&key=${apiKey}&part=snippet,contentDetails,statistics,status,player`);
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);

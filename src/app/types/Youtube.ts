@@ -14,6 +14,7 @@ export type Thumbnail = {
       channelTitle: string;
       description: string;
       embedHtml: any;
+      publishedAt: string;
       thumbnails: {
         medium: Thumbnail;
         high: Thumbnail;

@@ -113,14 +113,14 @@ export const Header = () => {
 
        </div> 
 
-      <button
+      {/* <button
         className='text-[24px] '
 
       >
        
 
     <BsCameraVideo></BsCameraVideo>
-      </button>
+      </button> */}
 
 
     </header>

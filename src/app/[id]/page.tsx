@@ -68,21 +68,23 @@ export default function Page() {
               >
 
               <section
-              className='bg-blue-500 md:m-12 md:p-12  md:space-y-5'
+              className='bg-blue-500 md:m-12 md:p-12  md:space-y-5 p-3'
               >
-              <div 
+               <div 
               dangerouslySetInnerHTML={{ __html: video.player.embedHtml || '' }}
               id='iframe'
               ref={containerRef}
               className=''
-              /> 
+              />  
 
               <h1
-              className='md:w-[489px] w-72 '
+              className='w-72  mt-5
+                         md:w-[489px] md:ml-0'
               >{video.snippet.title}</h1>
 
                   <div
-                  className='flex flex-row  md:gap-28 items-center gap-5'
+                  className='flex flex-row  md:gap-28 items-center gap-5  mb-5
+                              md:ml-0 md:mb-0'
                   >
               <p>{video.snippet.channelTitle}</p> 
               <button
@@ -97,7 +99,8 @@ export default function Page() {
                   {
                     iSComentário?
                   <div
-                  className='bg-[#272727] rounded-lg md:p-12 md:w-[600px]'
+                  className='bg-[#272727] rounded-lg p-5
+                              md:p-12 md:w-[600px]'
                   >
 
                     <div
@@ -113,11 +116,16 @@ export default function Page() {
 
                     <br />
 
+                 
                     <div
-                    className=''
+                      className='bg-red-500'
+                    
                     >
+                    <p
+                    >
+                      {video.snippet.description}
+                    </p> 
 
-                <p>{video.snippet.description}</p> 
                     </div>
 
                     </div>
@@ -126,7 +134,8 @@ export default function Page() {
 
 
                     <div
-                    className='  md:relative md:top-10'
+                    className=' relative top-8 pb-5  
+                                md:relative md:top-10 md:pb-0'
                     >
 
                    <button
@@ -145,7 +154,7 @@ export default function Page() {
                     <div
                     onClick={openComentário}
                     className='bg-[#272727] rounded-lg md:p-3 md:h-24 md:w-[600px]
-                      cursor-pointer hover:bg-[#696969]'
+                      cursor-pointer hover:bg-[#696969] p-5'
                     >
   
                       <div

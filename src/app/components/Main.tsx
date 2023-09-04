@@ -3,10 +3,9 @@ import React, {useState, useEffect} from 'react'
 import { YoutubeVideo, YoutubeResponse } from '../types/Youtube'; 
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchYoutubeData  } from '../../../Redux/features/slice';
-import { RootState } from '../../../Redux/store'; // Certifique-se de que o caminho está correto
 import Link from 'next/link'
 
-
+import { RootState, AppDispatch } from '../../../Redux/store'; // Certifique-se de que o caminho está correto
 
 //import Image from 'next/image'
 
@@ -15,9 +14,7 @@ export const Main = () => {
     
   const [youtube, setYoutube] = useState([]);
 
-  const dispatch = useDispatch();
-
-
+  const dispatch = useDispatch<AppDispatch>();
   
   const youtubeData = useSelector((state: RootState) => state.youtube.data);
   

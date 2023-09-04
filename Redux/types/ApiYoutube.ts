@@ -1,3 +1,5 @@
+import { PayloadAction  } from '@reduxjs/toolkit';
+
 export type Thumbnail = {
     url: string;
     width: number;
@@ -16,6 +18,14 @@ export type Thumbnail = {
       };
     };
   };
+
+export  interface RequestState {
+    status: 'idle' | 'loading' | 'succeeded' | 'failed';
+    data: YoutubeVideo[] | null; 
+    error: string | null;
+    addCase: (state : RequestState, action : PayloadAction<YoutubeVideo[]>) => void;
+  }
+  
   
   export type YoutubeResponse = {
     items: YoutubeVideo[];

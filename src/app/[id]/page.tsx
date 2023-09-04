@@ -6,6 +6,7 @@ import { fetchYoutubeData  } from '../../../Redux/features/slice';
 import { RootState } from '../../../Redux/store'; // Certifique-se de que o caminho está correto
 
 export default function Page() {
+  
   const youtubeData = useSelector((state: RootState) => state.youtube.data);
 
     return (

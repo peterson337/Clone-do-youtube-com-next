@@ -3,9 +3,8 @@ import { Header } from "./components/Header"
 import { Main } from "./components/Main"
 import { Sidebar } from "./components/Sidebar"
 import { useHeader } from "./hook/useHeader"
-import { RootState } from '../../../Redux/store'; // Certifique-se de que o caminho está correto
+import { RootState } from '../../Redux/store'; // Certifique-se de que o caminho está correto
 import { useSelector } from 'react-redux';
-import { changeBoolean } from '../../../Redux/features/sidebarSlice';
 
 
 //import Image from 'next/image'
@@ -15,7 +14,7 @@ import { changeBoolean } from '../../../Redux/features/sidebarSlice';
 
 
 export default function Home() {
-  const isSidebarOpen = useSelector((state: RootState) => state.sidebarSlice.isSidebar);
+  const isSidebarOpen = useSelector((state: RootState) => state.sidebarRedux.isSidebar);
 
   return (
     <main>

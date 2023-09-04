@@ -1,25 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { RootState } from '../store';
+import { RootState } from '../store';  
+import { Boolean } from "../types/Sidebar";
 
-interface CounterState {
-    isActive: boolean; 
-  }
-  
+const initialState: Boolean = {
+  isSidebar: false,
+};
 
 const sidebarRedux = createSlice({
     name: 'sidebarRedux',
-    initialState: {
-        isSidebar: false
-    },
-
+    initialState,
     reducers: {
-        setFalse: (state : any) => {
+        setFalse: (state : Boolean) => {
           state.isSidebar = false;
         },
-        setTrue: (state : any) => {
+        setTrue: (state : Boolean) => {
           state.isSidebar = true;
         },
-        changeBoolean: (state : any) => {
+        changeBoolean: (state : Boolean) => {
           state.isSidebar = !state.isSidebar;
         },
       },

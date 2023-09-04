@@ -1,11 +1,16 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction  } from '@reduxjs/toolkit';
+import { RootState } from '../store';
+import {RequestState, YoutubeVideo  } from "../types/ApiYoutube";
+
 
 export const fetchYoutubeData = createAsyncThunk(
   'youtube/fetchData',
   async () => {
     const url = 'https://www.googleapis.com/youtube/v3/videos';
     const apiKey = process.env.YOUTUBE_API_KEY;
-    const response = await fetch(`${url}?id=TJetxzGpbfA&key=${apiKey}&part=snippet,contentDetails,statistics,status,player`);
+    const id = 'TJetxzGpbfA';
+    const part = 'snippet,contentDetails,statistics,status,player'
+    const response = await fetch(`${url}?id=${id}&key=${apiKey}&part=${part}`);
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -16,26 +21,27 @@ export const fetchYoutubeData = createAsyncThunk(
   }
 );
 
+
 const youtubeSlice = createSlice({
   name: 'youtube',
   initialState: {
     data: [],
     status: 'idle',
-    error: null,
+    error: null as string | null,
   },
   reducers: {},
   extraReducers: (builder : any) => {
-    builder
-      .addCase(fetchYoutubeData.pending, (state : any) => {
+    
+    builder.addCase(fetchYoutubeData.pending, (state : RequestState) => {
         state.status = 'loading';
       })
-      .addCase(fetchYoutubeData.fulfilled, (state : any, action : any) => {
+    builder.addCase(fetchYoutubeData.fulfilled, (state: RequestState, action : PayloadAction<YoutubeVideo[]>) => {
         state.status = 'succeeded';
         state.data = action.payload;
       })
-      .addCase(fetchYoutubeData.rejected, (state : any, action : any) => {
+    builder.addCase(fetchYoutubeData.rejected, (state : RequestState, action : PayloadAction<string | null>) => {
         state.status = 'failed';
-        state.error = action.error.message;
+        state.error = action.payload; 
       });
   },
 });

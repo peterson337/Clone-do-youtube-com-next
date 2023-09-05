@@ -18,7 +18,7 @@ export const Main = () => {
   
   const youtubeData = useSelector((state: RootState) => state.youtube.data);
 
-  const id = 'TJetxzGpbfA,NOVKFU7EhEo,xmxEuQXTHUU,fsJ7YYqr8YU&t=57s,8NcIOBreZpc,ZFlUFbA2LGc,4qkLz0N_L6c';
+  const id = 'TJetxzGpbfA,NOVKFU7EhEo,xmxEuQXTHUU,fsJ7YYqr8YU,8NcIOBreZpc,ZFlUFbA2LGc,xh9lAwNr5M8,Uds7g3M-4lQ,4qkLz0N_L6c,-qQnKILR5u0,pC2pRDL-WoY,CDPsde__6fY,XwRrpaSbaGk,';
 
   
   useEffect(() => {
@@ -41,7 +41,7 @@ export const Main = () => {
         youtubeData.map((video: YoutubeVideo) => {
           return(
             <section
-            key={video.snippet.title}
+            key={video.id}
               className='flex flex-wrap flex-col justify-center text-center items-center mt-3 
                          md:m-4 gap-3 md:mt-3 '  
             >

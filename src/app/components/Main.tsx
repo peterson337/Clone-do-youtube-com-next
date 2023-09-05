@@ -17,9 +17,12 @@ export const Main = () => {
   const dispatch = useDispatch<AppDispatch>();
   
   const youtubeData = useSelector((state: RootState) => state.youtube.data);
+
+  const id = 'TJetxzGpbfA,NOVKFU7EhEo,xmxEuQXTHUU,fsJ7YYqr8YU&t=57s,8NcIOBreZpc,ZFlUFbA2LGc,4qkLz0N_L6c';
+
   
   useEffect(() => {
-    dispatch(fetchYoutubeData()); // Substitua pela chave correta
+    dispatch(fetchYoutubeData(id)); // Substitua pela chave correta
   }, [dispatch]);
       //channelTitle
   return (
@@ -28,9 +31,11 @@ export const Main = () => {
     
     >
       <section
-      className='flex flex-row  	'   
+      className='flex md:flex-row  flex-col	flex-wrap'   
       
       >
+
+        
 
       {
         youtubeData.map((video: YoutubeVideo) => {

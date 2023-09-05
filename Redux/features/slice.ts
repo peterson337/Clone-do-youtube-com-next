@@ -5,10 +5,10 @@ import {RequestState, YoutubeVideo  } from "../types/ApiYoutube";
 
 export const fetchYoutubeData = createAsyncThunk(
   'youtube/fetchData',
-  async () => {
+  async (id : string) => {
+    // 
     const url = 'https://www.googleapis.com/youtube/v3/videos';
     const apiKey = process.env.YOUTUBE_API_KEY;
-    const id = 'TJetxzGpbfA';
     const part = 'snippet,contentDetails,statistics,status,player'
     const response = await fetch(`${url}?id=${id}&key=${apiKey}&part=${part}`);
 

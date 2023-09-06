@@ -4,12 +4,14 @@ import {RequestState, YoutubeVideo  } from "../types/ApiYoutube";
 
 export const videoEspecifico = createAsyncThunk(
     'youtubeData/videoEspecifico',
-    async (id: string) => {
+    async (q: string) => {
       // 
-      const url = 'https://www.googleapis.com/youtube/v3/videos';
+      const url = 'https://www.googleapis.com/youtube/v3/search';
       const apiKey = process.env.YOUTUBE_API_KEY;
-      const part = 'snippet,contentDetails,statistics,status,player'
-      const response = await fetch(`${url}?id=${id}&key=${apiKey}&part=${part}`);
+      const part = 'snippet'
+      const videoType = 'any'
+      const channelType =  'any'
+      const response = await fetch(`${url}?q=${q}&key=${apiKey}&part=${part}`);
   
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);

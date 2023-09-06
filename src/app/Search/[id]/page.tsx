@@ -4,13 +4,15 @@ import { usePathname } from 'next/navigation'
 import { useRouter } from 'next/navigation';
 import { useSelector,useDispatch } from 'react-redux';
 import { videoEspecifico } from "../../../../Redux/features/video";
+import { RootState, AppDispatch } from '../../../../Redux/store'; // Certifique-se de que o caminho está correto
+;
 
 export default function Page(){
 
   const pathname = usePathname();
   const d = pathname.slice(8);
-  const inputValue = useSelector((state : any) => state.video.data);
-  const dispatch = useDispatch();
+  const inputValue = useSelector((state : RootState) => state.video.data);
+  const dispatch = useDispatch<AppDispatch>();
 
     useEffect(() => {
        dispatch(videoEspecifico(d))

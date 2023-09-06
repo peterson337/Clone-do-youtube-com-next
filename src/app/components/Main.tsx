@@ -46,12 +46,18 @@ export const Main = () => {
                          md:m-4 gap-3 md:mt-3 '  
             >
               
-              
+              <Link
+              href={`/${video.id}`}
+              >
+
               <img src={video.snippet.thumbnails.high.url} 
               alt="japonesa"
               className='w-72 md:w-96  rounded-3xl'
               
                />
+              </Link>
+
+            
 
             <Link href={`/${video.id}`} className='w-96'>{video.snippet.title}</Link>
 

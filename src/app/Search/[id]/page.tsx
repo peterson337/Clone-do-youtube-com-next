@@ -27,25 +27,29 @@ export default function Page(){
     >
      {
           data.map((val : YoutubeVideo) => {
+          const isChannel = val.id.kind === 'youtube#channel';
+
             return(
               <section
               key={val.id.videoId}
-              className='bg-red-500 md:flex md:mt-7 md:ml-40 md:flex-row items-start'
+              className='bg-red-500 md:flex md:mt-7 md:ml-40 md:flex-row items-start mb-5'
               >
                 <Link
-                href={`/${val.id.videoId}`}
+                href={`/${isChannel? '/' :val.id.videoId}`}
                 >
                 
                  <img 
                 src={val.snippet.thumbnails.high.url}
-                className='w-72 md:w-96  rounded-3xl'
+                className={`${isChannel? 'md:w-40 w-40 rounded-full md:w-96  rounded-3xl' : 'md:w-96  rounded-3xl'}`}
                 />
                 </Link>
         
                 <div
                 className='md:flex md:flex-col md:m-2'
                 >
-                  <Link href={`/${val.id.videoId}`} 
+                  <Link
+                href={`/${isChannel? '/' :val.id.videoId}`}
+ 
                   className='w-96'>
                     {val.snippet.title}
                   </Link>

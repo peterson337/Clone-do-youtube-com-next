@@ -51,7 +51,7 @@ export const Main = () => {
               >
 
               <img src={video.snippet.thumbnails.high.url} 
-              alt="japonesa"
+              alt={video.snippet.title}
               className='w-72 md:w-96  rounded-3xl'
               
                />

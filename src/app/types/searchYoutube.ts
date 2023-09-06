@@ -8,6 +8,7 @@ export type YoutubeVideo = {
     id:{
 
         videoId: string;
+        kind: string;
     }
 
     snippet: {

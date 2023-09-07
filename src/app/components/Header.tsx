@@ -1,20 +1,22 @@
 'use client'
-import React from 'react'
+import React,{useEffect} from 'react'
 import { ImMenu } from 'react-icons/im';
 import { BsSearch, BsCameraVideo } from 'react-icons/bs';
 import Image from 'next/image'
+import Link from 'next/link'
+import {setInputValue}  from "../../.././Redux/features/input";
 import { RootState } from '../../../Redux/store'; // Certifique-se de que o caminho está correto
 import { useSelector,useDispatch } from 'react-redux';
 import { changeBoolean } from '../../../Redux/features/sidebarSlice';
-import Link from 'next/link'
-import {setInputValue}  from "../../.././Redux/features/input";
 import { useRouter } from 'next/navigation';
+import { Sidebar } from "../components/Sidebar"
+
 
 export const Header = () => {
 
-  const dispatch = useDispatch();
   const inputValue = useSelector((state : any) => state.inputSlice.inputValue);
-  // Função para alternar o estado do sidebar
+  
+  const dispatch = useDispatch();
   const toggleSidebar = () => {
     dispatch(changeBoolean());
   };
@@ -25,6 +27,19 @@ export const Header = () => {
 
   const router = useRouter();
 
+  const isSidebarOpen = useSelector((state: RootState) => state.sidebarRedux.isSidebar);
+  
+
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      if (isSidebarOpen) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = 'auto';
+      }
+    }
+  }, [isSidebarOpen]);
   const submitSearchInput = () => {
         router.push(`/Search/${inputValue}`)
   }
@@ -33,9 +48,13 @@ export const Header = () => {
   
   return (
     <header
-    className='bg-[#0f0f0f] p-2 flex flex-row items-center gap-5'
+    className='flex flex-col'
     >
-        <button
+      <main
+    className='bg-[#0f0f0f] p-2 flex flex-row items-center gap-5'
+
+      >
+      <button
         onClick={toggleSidebar}
         >
         <ImMenu
@@ -136,7 +155,36 @@ export const Header = () => {
 
     <BsCameraVideo></BsCameraVideo>
       </button> */}
+      </main>
+      {
+        isSidebarOpen?
+        <section
+        >
+          <div
+            className="bg-[#0f0f0f]  md:w-60 w-48 h-screen border-b border-b-black  fixed z-50"
 
+          >
+        <Sidebar
+        ></Sidebar>
+
+          </div>
+
+        <div
+        className=" bg-black bg-opacity-10 w-screen h-screen"
+        onClick={toggleSidebar}
+        >
+
+        </div>
+
+        </section>
+
+        :
+
+        <section></section>
+
+      }
+
+        
 
     </header>
   )

@@ -3,6 +3,8 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { Providers } from '../../Redux/Provider'
 import { Header } from "./components/Header"
+import { Sidebar } from "./components/Sidebar"
+import { useHeader } from './hook/useHeader'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -23,6 +25,8 @@ export default function RootLayout({
       <Providers>
     
       <body className={inter.className}>
+
+        
       <Header/>
         {children}</body>
 

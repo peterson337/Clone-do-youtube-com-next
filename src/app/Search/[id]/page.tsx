@@ -26,6 +26,7 @@ export default function Page(){
     <main
     className='bg-blue-500 md:flex md:flex-col'
     >
+      
      {
           data.map((val : YoutubeVideo) => {
           const isChannel = val.id.kind === 'youtube#channel';

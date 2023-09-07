@@ -2,9 +2,10 @@
 import React, {useState} from 'react'
 
 export const useHeader = () => {
-    const [isSidebar, setIsSidebar] = useState(true)
+    const [isSidebar, setIsSidebar] = useState(false)
   return {
     isSidebar,
-    setIsSidebar
+    openSidebar: () => setIsSidebar(true),
+    closeSidebar: () => setIsSidebar(false),
   }
 }

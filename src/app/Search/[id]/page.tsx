@@ -7,6 +7,7 @@ import { videoEspecifico } from "../../../../Redux/features/video";
 import { RootState, AppDispatch } from '../../../../Redux/store'; // Certifique-se de que o caminho está correto
 import { YoutubeVideo } from "../../types/searchYoutube"; 
 import Link from '../../../../node_modules/next/link';
+import { customHook } from "./hook/customHook";
 
 export default function Page(){
 
@@ -14,7 +15,7 @@ export default function Page(){
   const d = pathname.slice(8);
   const data = useSelector((state : RootState) => state.video.data);
   const dispatch = useDispatch<AppDispatch>();
-
+  const {formatDateTime} = customHook();
     useEffect(() => {
        dispatch(videoEspecifico(d))
     }, [])
@@ -32,34 +33,44 @@ export default function Page(){
             return(
               <section
               key={val.id.videoId}
-              className='bg-red-500 md:flex md:mt-7 md:ml-40 md:flex-row items-start mb-5'
+              className='md:flex md:mt-7 md:ml-40 md:flex-row md:items-start mb-5'
               >
+                
+        
                 <Link
                 href={`/${isChannel? '/' :val.id.videoId}`}
                 >
                 
                  <img 
                 src={val.snippet.thumbnails.high.url}
-                className={`${isChannel? 'md:w-40 w-40 rounded-full md:w-96  rounded-3xl' : 'md:w-96  rounded-3xl'}`}
+                className={`${isChannel? 'w-32 rounded-full   rounded-3xl mt-5' : 'md:w-96  rounded-3xl'}`}
                 />
                 </Link>
-        
+                
                 <div
-                className='md:flex md:flex-col md:m-2'
+                className={`${isChannel? ' ' : 'md:flex md:flex-col md:m-2 '}`}
                 >
                   <Link
                 href={`/${isChannel? '/' :val.id.videoId}`}
  
-                  className='w-96'>
+                  className={`${isChannel? 'w-96 ' : 'w-96 text-[20px]'}`}>
                     {val.snippet.title}
                   </Link>
         
-                  <p>{val.snippet.publishTime}</p>
+                    {
+                      !isChannel &&
                   <p
-                  className='mt-5'
-                  >{val.snippet.channelTitle}</p>
+                  className='text-[#aaa]'
+                  >{formatDateTime(val.snippet.publishTime)}</p>
+                    }
+
                   <p
-                  className='mt-5'
+                  className='mt-5 text-[#aaa]'
+                  >
+                
+                    {val.snippet.channelTitle}</p>
+                  <p
+                  className='mt-5 text-[#aaa]'
         
                   >{val.snippet.description}</p>
         

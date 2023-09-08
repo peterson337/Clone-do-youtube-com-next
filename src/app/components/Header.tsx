@@ -57,7 +57,8 @@ export const Header = () => {
         <section
         >
           <div
-            className="bg-[#0f0f0f]  md:w-60 w-48 h-screen border-b border-b-black  fixed z-50"
+            className="bg-[#0f0f0f]  md:w-60 w-48 h-screen border-b border-b-black 
+             fixed z-50"
       
           >
         <Sidebar

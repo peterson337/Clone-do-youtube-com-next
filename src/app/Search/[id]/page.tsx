@@ -37,41 +37,54 @@ export default function Page(){
               className='md:flex md:mt-7 md:ml-40 md:flex-row md:items-start mb-5'
               >
                 
-        
+                <div
+
+                className='flex md:justify-start justify-center'
+                >
                 <Link
                 href={`/${isChannel? '/' :val.id.videoId}`}
                 >
                 
                  <img 
                 src={val.snippet.thumbnails.high.url}
-                className={`${isChannel? 'w-32 rounded-full   rounded-3xl mt-5' : 'md:w-96  rounded-3xl'}`}
+                className={`${isChannel? 'w-32 rounded-full  rounded-3xl md:mt-5 md:mr-28 md:ml-32' : 'md:w-96 w-72  rounded-3xl'}`}
                 />
                 </Link>
+
+                </div>
                 
                 <div
-                className={`${isChannel? ' ' : 'md:flex md:flex-col md:m-2 '}`}
+                className={`${isChannel? 'md:mt-5  justify-center md:justify-start text-center md:text-start' : 'md:flex md:flex-col md:m-2 justify-center text-center md:text-start md:justify-start'}`}
                 >
+                  <p
+                  >
+                  
+                  
+
+                  </p>
+        
                   <Link
                 href={`/${isChannel? '/' :val.id.videoId}`}
+                
+                className={`${isChannel? 'md:w-96 text-center md:text-start ' : 'md:w-96 md:text-[20px] text-center md:text-start  text-[17px] mx-16 md:mx-0'}`}
+                >
  
-                  className={`${isChannel? 'w-96 ' : 'w-96 text-[20px]'}`}>
                     {val.snippet.title}
                   </Link>
-        
                     {
                       !isChannel &&
                   <p
-                  className='text-[#aaa]'
+                  className='text-[#aaa] text-center md:text-start'
                   >{formatDateTime(val.snippet.publishTime)}</p>
                     }
 
                   <p
-                  className='mt-5 text-[#aaa]'
+                  className={`${isChannel? 'text-[#aaa] md:w-[700px] text-center md:text-start' : 'mt-5 text-[#aaa] text-center md:text-start'} `}
                   >
                 
                     {val.snippet.channelTitle}</p>
                   <p
-                  className='mt-5 text-[#aaa]'
+                  className={`${isChannel? 'text-[#aaa] md:w-[500px] text-center md:text-start mx-12 md:mx-0' : 'mt-5 text-[#aaa] md:w-[700px] mx-12 md:mx-0' }`}
         
                   >{val.snippet.description}</p>
         

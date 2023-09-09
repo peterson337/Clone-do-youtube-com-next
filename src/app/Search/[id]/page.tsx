@@ -24,7 +24,7 @@ export default function Page(){
 
   return (
     <main
-    className='bg-blue-500 md:flex md:flex-col'
+    className=' md:flex md:flex-col'
     >
       
      {
@@ -43,34 +43,46 @@ export default function Page(){
                 >
                 <Link
                 href={`/${isChannel? '/' :val.id.videoId}`}
+                className=''
                 >
                 
                  <img 
                 src={val.snippet.thumbnails.high.url}
-                className={`${isChannel? 'w-32 rounded-full  rounded-3xl md:mt-5 md:mr-28 md:ml-32' : 'md:w-96 w-72  rounded-3xl'}`}
+                className={`${isChannel? 
+                'w-32 rounded-full  rounded-3xl md:mt-5 mt-5 md:mr-28 md:ml-32 mb-5 md:mb-0' 
+                : 'md:w-96 w-72  rounded-3xl mb-5 md:mb-0'}`}
                 />
                 </Link>
 
                 </div>
+
+                {/* {!isChannel &&
+                <p>Vídeo mais recente do canal {d}</p>
+                } */}
                 
                 <div
-                className={`${isChannel? 'md:mt-5  justify-center md:justify-start text-center md:text-start' : 'md:flex md:flex-col md:m-2 justify-center text-center md:text-start md:justify-start'}`}
+                className={`${isChannel? 
+                  'md:mt-5  justify-center md:justify-start text-center md:text-start'
+                 : 
+      'md:flex md:flex-col md:m-2 md:ml-7 justify-center text-center md:text-start md:justify-start gap-3 md:gap-0 md:mt-7'}`}
                 >
                   <p
+                    className={`${isChannel? 'md:w-96 text-center md:text-start ' 
+                    : 'md:w-96 text-[20px] md:text-start text-center mx-12 md:mx-0    '}`}
+
                   >
+                  <Link
+                href={`/${isChannel? '/' :val.id.videoId}`}
+                
+                >
+ 
+                    {val.snippet.title}
+                  </Link>
                   
                   
 
                   </p>
         
-                  <Link
-                href={`/${isChannel? '/' :val.id.videoId}`}
-                
-                className={`${isChannel? 'md:w-96 text-center md:text-start ' : 'md:w-96 md:text-[20px] text-center md:text-start  text-[17px] mx-16 md:mx-0'}`}
-                >
- 
-                    {val.snippet.title}
-                  </Link>
                     {
                       !isChannel &&
                   <p

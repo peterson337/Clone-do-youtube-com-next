@@ -6,6 +6,7 @@ import { fetchYoutubeData  } from '../../../Redux/features/slice';
 import Link from 'next/link'
 
 import { RootState, AppDispatch } from '../../../Redux/store'; // Certifique-se de que o caminho está correto
+import { useRouter } from 'next/navigation'
 
 //import Image from 'next/image'
 
@@ -59,7 +60,8 @@ export const Main = () => {
 
             
 
-            <Link href={`/${video.id}`} className='w-96'>{video.snippet.title}</Link>
+            <Link href={`/${video.id}`} className='w-96'>{video.snippet.title}
+            </Link>
 
             
               <p>{video.snippet.channelTitle}</p>
@@ -82,6 +84,7 @@ export const Main = () => {
           )
         })
       }
+
       </section>
   </main>
   )

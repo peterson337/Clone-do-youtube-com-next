@@ -9,8 +9,9 @@ const inputSlice = createSlice({
         setInputValue: (state: any, action : any) => {
             state.inputValue = action.payload;
         },
+        
     },
 });
 
-export const { setInputValue } = inputSlice.actions;
+export const { setInputValue} = inputSlice.actions;
 export default inputSlice.reducer

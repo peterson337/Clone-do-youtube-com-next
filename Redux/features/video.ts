@@ -11,7 +11,7 @@ export const videoEspecifico = createAsyncThunk(
       const part = 'snippet'
       const videoType = 'any'
       const channelType =  'any'
-      const response = await fetch(`${url}?q=${q}&key=${apiKey}&part=${part}`);
+      const response = await fetch(`${url}?q=${q}&key=${apiKey}&part=${part}&maxResults=50	`);
   
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);

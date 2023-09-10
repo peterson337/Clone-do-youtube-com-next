@@ -4,8 +4,9 @@ import { YoutubeVideo, YoutubeResponse } from '../types/Youtube';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchYoutubeData  } from '../../../Redux/features/slice';
 import { RootState, AppDispatch } from '../../../Redux/store'; // Certifique-se de que o caminho está correto
-import { Decrição } from "./hook/decrição";
 import { usePathname  } from 'next/navigation'
+import { Decrição } from "./hook/decrição";
+import { formatacaoDados } from '@/app/[id]/hook/formatacaoDados';
 
 export default function Page() {
 
@@ -20,42 +21,22 @@ export default function Page() {
       cancelarIncricao,
     } = Decrição();
 
-  useEffect(() => {
+    useEffect(() => {
+      if (containerRef.current) {
+        const iframe = containerRef.current.querySelector('iframe');
     
-    if (containerRef.current) {
-     
-      const iframe = containerRef.current.querySelector('iframe');
-
-           if (iframe) {
-        
+        if (iframe) {
+          // Ajuste a largura e altura do iframe como desejado
+          iframe.style.width = '50px'; // Isso definirá a largura como 10px
+          iframe.style.height = '100%'; // Isso definirá a altura como 100%
+        }
       }
-    }
-  }, []);
+    }, []);
+    
 
-  const formatDateTime = (dateTimeString: string) => {
-    const dateTime = new Date(dateTimeString);
-    return dateTime.toLocaleString('pt-BR', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: 'numeric',
-      minute: 'numeric',
-      second: 'numeric',
-    });
-  };
+      const {formatDateTime,
+        formatViews} = formatacaoDados();
 
-  function formatViews(views : number) {
-    if (views >= 1000000000) {
-      return (views / 1000000000).toFixed(1) + 'B'; // Bilhões
-    } else if (views >= 1000000) {
-      return (views / 1000000).toFixed(1) + 'M'; // Milhões
-    } else if (views >= 1000) {
-      return (views / 1000).toFixed(1) + 'K'; // Milhares
-    } else {
-      return views.toString(); // Menos de mil
-    }
-  }
-  
       const youtubeData = useSelector((state: RootState) => state.youtube.data);
       const dispatch = useDispatch<AppDispatch>();
       const pathname = usePathname();
@@ -79,12 +60,12 @@ export default function Page() {
               <section
               className='md:m-12 md:p-12  md:space-y-5 p-3'
               >
-               <div 
-              dangerouslySetInnerHTML={{ __html: video.player.embedHtml || '' }}
-              id='iframe'
-              ref={containerRef}
-              className=''
-              />  
+                <div
+                dangerouslySetInnerHTML={{ __html: video.player.embedHtml || '' }}
+                id='iframe'
+                ref={containerRef}
+                // className='w-12' // Defina o tamanho máximo do conteúdo
+              /> 
 
               <h1
               className='w-72  mt-5

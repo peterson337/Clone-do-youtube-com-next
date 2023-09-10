@@ -4,13 +4,14 @@ import { BsSearch, BsCameraVideo } from 'react-icons/bs';
 import {setInputValue}  from "../../.././Redux/features/input";
 import { useRouter } from 'next/navigation';
 import { Close } from './Close';
+import { RootState, AppDispatch } from "../../../Redux/store";
 
 
 export const Form = () => {
 
-    const inputValue = useSelector((state : any) => state.inputSlice.inputValue);
+    const inputValue = useSelector((state : RootState) => state.inputSlice.inputValue);
   
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
     
     const router = useRouter();
     const submitSearchInput = () => {

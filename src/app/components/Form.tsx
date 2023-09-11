@@ -23,6 +23,8 @@ export const Form = () => {
       }
 
 
+    
+
     const clearInput = () => {
       dispatch(setInputValue(''));
 
@@ -32,23 +34,24 @@ export const Form = () => {
 
   return (
     <main
-    className=' flex items-center relative'
+    className=' flex items-center relative bg-black'
 
     >
         
     
     <input type="text"
-    className='w-32 p-1 rounded-full text-white bg-black outline-0 pl-5 border-2 border-[#303030]
+    className='  w-36 p-1 rounded-full text-white bg-black outline-0 pl-5 border-2 border-[#303030]
               md:ml-40 md:w-[600px] md:p-2
               '
     placeholder='Pesquisar'
     onChange={handlerInputSearch}
     value={inputValue}
+    
      />
 
       <button
         className='flex justify-center text-[14px] border-l-2 border-[#303030]  relative
-                   p-[9px]  right-[30px]
+                   p-[11px]  right-[30px]
                    md:p-3  md:right-20 bg-[#222]  md:w-[77px]  rounded-r-full md:text-[16px]
                  '
             onClick={submitSearchInput}
@@ -59,14 +62,16 @@ export const Form = () => {
       ></BsSearch>
       </button>
 
+
         {
             inputValue.length > 0 &&
         <button
-        className=' relative right-48 hover:bg-gray-500/40 p-2 rounded-full'
+        className=' relative md:right-48 hover:bg-gray-500/40 p-2 rounded-full  right-28 
+                   '  
         onClick={clearInput}
         >
+            <Close></Close>
 
-      <Close></Close>
         </button>
         }
 

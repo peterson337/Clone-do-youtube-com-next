@@ -7,6 +7,8 @@ import Link from 'next/link'
 
 import { RootState, AppDispatch } from '../../../Redux/store'; // Certifique-se de que o caminho está correto
 import { useRouter } from 'next/navigation'
+import { customHook } from '../Search/[id]/hook/customHook';
+
 
 //import Image from 'next/image'
 
@@ -21,6 +23,7 @@ export const Main = () => {
 
   const id = 'TJetxzGpbfA,NOVKFU7EhEo,xmxEuQXTHUU,fsJ7YYqr8YU,8NcIOBreZpc,ZFlUFbA2LGc,xh9lAwNr5M8,Uds7g3M-4lQ,4qkLz0N_L6c,-qQnKILR5u0,pC2pRDL-WoY,CDPsde__6fY,XwRrpaSbaGk,E8c6KnhdCWA,5CUCZKrP3jY';
 
+  const {formatViews, formatDateTime} = customHook();
   
   useEffect(() => {
     dispatch(fetchYoutubeData(id)); // Substitua pela chave correta
@@ -32,7 +35,7 @@ export const Main = () => {
     
     >
       <section
-      className='flex md:flex-row  flex-col	flex-wrap items-center'   
+      className='flex md:flex-row  flex-col	flex-wrap'   
       
       >
 
@@ -43,7 +46,7 @@ export const Main = () => {
           return(
             <section
             key={video.id}
-              className='flex flex-wrap flex-col justify-center text-center  mt-3 
+              className='flex flex-wrap flex-col justify-center text-center items-center mt-3 
                          md:m-4 gap-3 md:mt-3 '  
             >
               
@@ -69,17 +72,23 @@ export const Main = () => {
 
             
               <p
-              className='text-[#aaa]'
+              className='text-[#aaa] mx-12 md:mx-0'
               >
                 {video.snippet.channelTitle}
               </p>
 
               <p
-              className='text-[#aaa]'
+              className='text-[#aaa] mx-12 md:mx-0'
               >
-                visualização:
-               {video.statistics.viewCount}
+                Visualizações:  {formatViews(video.statistics.viewCount)}
                </p>
+
+               <p
+              className='text-[#aaa] mx-12 md:mx-0'
+
+               >
+                {formatDateTime(video.snippet.publishedAt)}
+                </p>
     
             </section>
           )

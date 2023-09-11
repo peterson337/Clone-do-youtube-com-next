@@ -10,7 +10,6 @@ import { formatacaoDados } from '@/app/[id]/hook/formatacaoDados';
 
 export default function Page() {
 
-  const containerRef = useRef<HTMLDivElement | null>(null);
 
   const {
     iSComentário,
@@ -21,17 +20,7 @@ export default function Page() {
       cancelarIncricao,
     } = Decrição();
 
-    useEffect(() => {
-      if (containerRef.current) {
-        const iframe = containerRef.current.querySelector('iframe');
-    
-        if (iframe) {
-          // Ajuste a largura e altura do iframe como desejado
-          iframe.style.width = '50px'; // Isso definirá a largura como 10px
-          iframe.style.height = '100%'; // Isso definirá a altura como 100%
-        }
-      }
-    }, []);
+
     
 
       const {formatDateTime,
@@ -48,8 +37,12 @@ export default function Page() {
           //channelTitle
 
     return (
-    <main>
-        <section>
+    <main
+    
+    >
+        <section
+        className='flex justify-center md:justify-start '
+        >
           {
             youtubeData.map((video: YoutubeVideo) => {
 
@@ -65,7 +58,7 @@ export default function Page() {
               >
                                   
                 <iframe
-                className='w-[350px] h-80 md:w-[739px] md:h-[500px] rounded-[20px]'
+                className='w-[330px] h-80 md:w-[739px] md:h-[500px] rounded-[20px]'
                   src={url}
                  
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share;"

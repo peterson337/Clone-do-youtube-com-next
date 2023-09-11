@@ -18,20 +18,9 @@ export const Sidebar = () => {
 // style="pointer-events: none; display: block; width: 100%; height: 100%;"
   return (
     <main
-    className='flex flex-col'
+    className='flex flex-col '
     >
-      {/* <section
-    className='flex flex-row m-4 items-center gap-7'
-
-      >
-        <button
-        onClick={toggleSidebar}
-        >
-
-      <Menu></Menu>
-        </button>
-      <LogoYoutube></LogoYoutube>
-      </section> */}
+   
 
       <button
       onClick={toggleSidebar}

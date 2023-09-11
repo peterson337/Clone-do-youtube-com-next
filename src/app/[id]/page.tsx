@@ -52,25 +52,30 @@ export default function Page() {
         <section>
           {
             youtubeData.map((video: YoutubeVideo) => {
+
+              const url = video.player.embedHtml.match(/src="(.*?)"/)[1];
+
               return( 
               <main
               key={video.id}
               >
 
               <section
-              className='md:m-12 md:p-12  md:space-y-5 p-3'
+              className='   md:space-y-5 p-3 items-center'
               >
-                <div
-                dangerouslySetInnerHTML={{ __html: video.player.embedHtml || '' }}
-                id='iframe'
-                ref={containerRef}
-                // className='w-12' // Defina o tamanho máximo do conteúdo
-              /> 
+                                  
+                <iframe
+                className='w-[350px] h-80 md:w-[739px] md:h-[500px] rounded-[20px]'
+                  src={url}
+                 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share;"
+                  allowFullScreen
+                />
 
-              <h1
-              className='w-72  mt-5
-                         md:w-[489px] md:ml-0'
-              >{video.snippet.title}</h1>
+              <h2
+              className='w-80  mt-5 mb-4 md:mb-0
+                         md:w-[700px] md:ml-0 md:text-[22px] text-[19px]'
+              >{video.snippet.title}</h2>
 
                   <div
                   className='flex flex-row  md:gap-28 items-center gap-5  mb-5
@@ -79,7 +84,8 @@ export default function Page() {
               <p>{video.snippet.channelTitle}</p> 
               <button
               className='bg-[#f1f1f1] text-[#1d1d1d] p-2 rounded-full'
-              >Inscreva-se
+              >Inscreva-se            
+
               </button>
                   </div>
 
@@ -89,7 +95,7 @@ export default function Page() {
                   {
                     iSComentário?
                   <div
-                  className='bg-[#272727] rounded-lg p-5
+                  className='bg-[#272727] rounded-[20px] p-2
                               md:p-12 md:w-[600px]'
                   >
 
@@ -108,10 +114,10 @@ export default function Page() {
 
                  
                     <div
-                      className=''
                     
                     >
                     <p
+                    
                     >
                       {video.snippet.description}
                     </p> 
@@ -124,7 +130,7 @@ export default function Page() {
 
 
                     <div
-                    className=' relative top-8 pb-5  
+                    className=' relative top-8 pb-9  
                                 md:relative md:top-10 md:pb-0'
                     >
 
@@ -143,7 +149,7 @@ export default function Page() {
                     :
                     <div
                     onClick={openComentário}
-                    className='bg-[#272727] rounded-lg md:p-3 md:h-24 md:w-[600px]
+                    className='bg-[#272727] rounded-lg md:p-3 md:h-24 md:w-[700px]
                       cursor-pointer hover:bg-[#696969] p-5'
                     >
   
@@ -152,7 +158,8 @@ export default function Page() {
                       >
   
                    <p>{formatViews(video.statistics.viewCount)}</p>   
-                  <p> {formatDateTime(video.snippet.publishedAt)}</p>    
+                  <p> {formatDateTime(video.snippet.publishedAt)}</p>
+                      
                       </div>
   
                       <br />

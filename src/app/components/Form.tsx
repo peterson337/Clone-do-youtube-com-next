@@ -18,13 +18,14 @@ export const Form = () => {
       router.push(`/Search/${inputValue}`)
 }
     
-    const handlerInputSearch = (event : any) => {
+    const handlerInputSearch = (event : React.ChangeEvent<HTMLInputElement>) => {
         dispatch(setInputValue(event.target.value));
       }
 
 
     const clearInput = () => {
-        dispatch(setInputValue(''));
+      dispatch(setInputValue(''));
+
     }
 
     

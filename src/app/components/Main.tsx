@@ -32,7 +32,7 @@ export const Main = () => {
     
     >
       <section
-      className='flex md:flex-row  flex-col	flex-wrap'   
+      className='flex md:flex-row  flex-col	flex-wrap items-center'   
       
       >
 
@@ -43,7 +43,7 @@ export const Main = () => {
           return(
             <section
             key={video.id}
-              className='flex flex-wrap flex-col justify-center text-center items-center mt-3 
+              className='flex flex-wrap flex-col justify-center text-center  mt-3 
                          md:m-4 gap-3 md:mt-3 '  
             >
               
@@ -59,27 +59,28 @@ export const Main = () => {
               </Link>
 
             
+            <p
+            className='md:w-96  mx-12 md:mx-0'
+            >
 
-            <Link href={`/${video.id}`} className='w-96'>{video.snippet.title}
+            <Link href={`/${video.id}`}>{video.snippet.title}
             </Link>
+            </p>
 
             
-              <p>{video.snippet.channelTitle}</p>
+              <p
+              className='text-[#aaa]'
+              >
+                {video.snippet.channelTitle}
+              </p>
 
-              <p>visualização: {video.statistics.viewCount}</p>
-              {/* <img src={video.snippet.thumbnails.high.url} 
-              alt="japonesa"
-              className='w-72'
-               />
-              <h1
-              className=''
-              >{video.snippet.title}</h1> */}
-
-            
-
-            
-
-
+              <p
+              className='text-[#aaa]'
+              >
+                visualização:
+               {video.statistics.viewCount}
+               </p>
+    
             </section>
           )
         })

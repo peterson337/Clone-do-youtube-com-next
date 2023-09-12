@@ -63,7 +63,7 @@ export const Form = () => {
       </button>
 
 
-        {
+        {/* {
             inputValue.length > 0 &&
         <button
         className=' relative md:right-48 hover:bg-gray-500/40 p-2 rounded-full  right-28 
@@ -73,7 +73,7 @@ export const Form = () => {
             <Close></Close>
 
         </button>
-        }
+        } */}
 
     </main>
   )

@@ -33,8 +33,8 @@ export default function Page(){
 
             return(
               <section
-              key={val.id.videoId}
-              className='md:flex md:mt-7 md:ml-40 md:flex-row md:items-start mb-5'
+              key={val.snippet.title}
+              className='md:flex md:mt-7 md:ml-40 md:flex-row md:items-start mb-5 bg-blue-500'
               >
                 
                 <div

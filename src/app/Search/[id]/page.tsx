@@ -34,12 +34,12 @@ export default function Page(){
             return(
               <section
               key={val.snippet.title}
-              className='md:flex md:mt-7 md:ml-40 md:flex-row md:items-start mb-5 bg-blue-500'
+              className='md:flex md:mt-7 md:ml-40 md:flex-row md:items-start mb-5 '
               >
                 
                 <div
 
-                className='flex md:justify-start justify-center'
+                className='flex md:justify-start justify-center '
                 >
                 <Link
                 href={`/${isChannel? '/' :val.id.videoId}`}
@@ -49,7 +49,7 @@ export default function Page(){
                  <img 
                 src={val.snippet.thumbnails.high.url}
                 className={`${isChannel? 
-                'w-32 rounded-full  rounded-3xl md:mt-5 mt-5 md:mr-28 md:ml-32 mb-5 md:mb-0' 
+                'w-32 rounded-full  rounded-3xl mt-5 md:mr-28 md:ml-32 mb-5 md:mb-0' 
                 : 'md:w-96 w-72  rounded-3xl mb-5 md:mb-0'}`}
                 />
                 </Link>
@@ -64,7 +64,7 @@ export default function Page(){
                 className={`${isChannel? 
                   'md:mt-5  justify-center md:justify-start text-center md:text-start'
                  : 
-      'md:flex md:flex-col md:m-2 md:ml-7 justify-center text-center md:text-start md:justify-start gap-3 md:gap-0 md:mt-7'}`}
+      'md:flex md:flex-col md:m-2 md:ml-7 justify-center text-center md:text-start md:justify-start gap-3 md:gap-0 md:mt-7 '}`}
                 >
                   <p
                     className={`${isChannel? 'md:w-96 text-center md:text-start ' 
@@ -86,7 +86,7 @@ export default function Page(){
                     {
                       !isChannel &&
                   <p
-                  className='text-[#aaa] text-center md:text-start'
+                  className='text-[#aaa] text-center md:text-start '
                   >{formatDateTime(val.snippet.publishTime)}</p>
                     }
 

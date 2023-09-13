@@ -95,11 +95,12 @@ export default function Page() {
                     <div
                     className=''
                     >
-                    <div
-                    className='flex flex-row md:gap-5'
+                  <div
+                    className='flex flex-row md:gap-2 gap-1'
                     >
 
                  <p>{formatViews(video.statistics.viewCount)}</p>   
+                 visualizações 
                 <p> {formatDateTime(video.snippet.publishedAt)}</p>    
                     </div>
 
@@ -142,18 +143,18 @@ export default function Page() {
                     :
                     <div
                     onClick={openComentário}
-                    className='bg-[#272727] rounded-lg md:p-3 md:h-24 md:w-[700px]
-                      cursor-pointer hover:bg-[#696969] p-5'
+                    className='bg-[#272727] rounded-[20px] p-2
+                    md:p-12 md:w-[600px] justify-start'
                     >
   
-                      <div
-                      className='flex flex-row md:gap-5'
-                      >
-  
-                   <p>{formatViews(video.statistics.viewCount)}</p>   
-                  <p> {formatDateTime(video.snippet.publishedAt)}</p>
-                      
-                      </div>
+                  <div
+                    className='flex flex-row md:gap-2 gap-1'
+                    >
+
+                 <p>{formatViews(video.statistics.viewCount)}</p>   
+                 visualizações 
+                <p> {formatDateTime(video.snippet.publishedAt)}</p>    
+                    </div>
   
                       <br />
   

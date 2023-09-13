@@ -31,11 +31,11 @@ export const Main = () => {
       //channelTitle
   return (
     <main
-
+      className='overflow-hidden	'
     
     >
       <section
-      className='flex md:flex-row  flex-col	flex-wrap'   
+      className='flex md:flex-row  flex-col	flex-wrap justify-center md:justify-start'   
       
       >
 

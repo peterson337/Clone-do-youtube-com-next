@@ -4,26 +4,16 @@ export const formatacaoDados = () => {
 
     const formatDateTime = (dateTimeString: string) => {
         const dateTime = new Date(dateTimeString);
-        return dateTime.toLocaleString('pt-BR', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-          hour: 'numeric',
-          minute: 'numeric',
-          second: 'numeric',
-        });
+        return dateTime.toLocaleString('pt-BR', 
+        { 
+          year: "numeric",
+          month: "short",
+          day: "numeric"
+         });
       };
     
       function formatViews(views : number) {
-        if (views >= 1000000000) {
-          return (views / 1000000000).toFixed(1) + 'B'; // Bilhões
-        } else if (views >= 1000000) {
-          return (views / 1000000).toFixed(1) + 'M'; // Milhões
-        } else if (views >= 1000) {
-          return (views / 1000).toFixed(1) + 'K'; // Milhares
-        } else {
-          return views.toString(); // Menos de mil
-        }
+        return views.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
       }
   return {
     formatDateTime,

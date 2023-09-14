@@ -31,7 +31,7 @@ export const Main = () => {
       //channelTitle
   return (
     <main
-      className='overflow-hidden	'
+      className=''
     
     >
       <section

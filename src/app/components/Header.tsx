@@ -51,7 +51,7 @@ export const Header = () => {
       
 
     <main
-    className='bg-black p-2 flex flex-row items-center gap-5'
+    className='bg-black p-2 flex flex-row items-center gap-3'
 
       >
       <button

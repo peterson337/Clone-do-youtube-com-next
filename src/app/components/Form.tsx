@@ -34,7 +34,7 @@ export const Form = () => {
 
   return (
     <main
-    className=' flex items-center relative bg-black'
+    className=' flex items-center  bg-black'
 
     >
         
@@ -50,8 +50,8 @@ export const Form = () => {
      />
 
       <button
-        className='flex justify-center text-[14px] border-l-2 border-[#303030]  relative
-                   p-[11px]  right-[30px]
+        className='  flex justify-center text-[14px] border-l-2 border-[#303030]  relative
+                   p-[10px]  right-[30px]
                    md:p-3  md:right-20 bg-[#222]  md:w-[77px]  rounded-r-full md:text-[16px]
                  '
             onClick={submitSearchInput}

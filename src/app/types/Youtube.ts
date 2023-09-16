@@ -10,6 +10,7 @@ export type Thumbnail = {
     statistics: any;
     viewCount: number;
     snippet: {
+      channelId: string;
       title: string;
       channelTitle: string;
       description: string;

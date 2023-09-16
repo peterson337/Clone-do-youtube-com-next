@@ -74,7 +74,12 @@ export const Main = () => {
               <p
               className='text-[#aaa] mx-12 md:mx-0'
               >
+                <Link
+                href={`/Canal/${video.snippet.channelId}`}
+                >
+                
                 {video.snippet.channelTitle}
+                </Link>
               </p>
 
               <p

@@ -8,7 +8,7 @@ export const canalEspecifico = createAsyncThunk(
     async (id: string) => {
         const url = 'https://www.googleapis.com/youtube/v3/channels';
         const apiKey = process.env.YOUTUBE_API_KEY;
-        const part = 'snippet,brandingSettings,contentDetails,contentOwnerDetails,id,statistics,status,topicDetails,localizations';
+        const part = 'snippet,brandingSettings,contentDetails,contentOwnerDetails,statistics,status,topicDetails,localizations';
         //? channelId
         const response = await fetch(`${url}?id=${id}&key=${apiKey}&part=${part}&maxResults=50	`);
 

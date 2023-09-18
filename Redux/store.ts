@@ -7,6 +7,7 @@ import youtubeReducer from './features/slice';
 import inputReducer  from "./features/input";
 import SearchVideo  from "./features/video";
 import canalDoYoutube  from "./features/canal";
+import changeNavLink  from "./features/canalBoolean";
 
 
 
@@ -18,6 +19,7 @@ export const store = configureStore({
     inputSlice: inputReducer,
     video: SearchVideo,   
     canal: canalDoYoutube,
+    changeNav: changeNavLink,
   },
 });
 

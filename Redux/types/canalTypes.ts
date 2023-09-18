@@ -6,18 +6,29 @@ export type CanalYoutube = {
     title: string;
     description: string;
     customUrl: string;
+    thumbnails: thumbnails
  }       
+ 
+ brandingSettings: {
+     image: Image
+    
+ }
 
- thumbnails: Thumbnail
-
- image: Image
+ statistics: Statistics
 
 }
 
-export  type  Thumbnail = {
+export type Statistics = {
+    subscriberCount: string;
+    videoCount: string
+}
+
+export  type  thumbnails = {
+    default: {
     url: string;
     width: number;
     height: number;
+    }
 }
 
 export  type Image = {

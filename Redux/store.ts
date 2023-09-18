@@ -6,6 +6,7 @@ import sidebarReducer from './features/sidebarSlice';
 import youtubeReducer from './features/slice';
 import inputReducer  from "./features/input";
 import SearchVideo  from "./features/video";
+import canalDoYoutube  from "./features/canal";
 
 
 
@@ -16,6 +17,7 @@ export const store = configureStore({
     sidebarRedux: sidebarReducer,
     inputSlice: inputReducer,
     video: SearchVideo,   
+    canal: canalDoYoutube,
   },
 });
 

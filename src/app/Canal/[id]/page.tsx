@@ -7,6 +7,7 @@ import { setVideo, setSobre, changeBooleanCanal} from '../../../../Redux/feature
 import { useSelector, useDispatch } from 'react-redux';
 import { usePathname  } from 'next/navigation'
 import { CanalYoutube } from "../../../../Redux/types/canalTypes";
+import { Video } from "@/app/components/Video";
 
 
 
@@ -22,6 +23,7 @@ export default function Page(){
          dispatch(canalEspecifico(id))
     }, [id])
 
+  
 
     return(
         <main>
@@ -56,7 +58,6 @@ export default function Page(){
                                 <p>{canal.snippet.customUrl}</p>
                                     <p>{canal.statistics.subscriberCount}</p>
                                     <p>{canal.statistics.videoCount}</p>
-                                {/* <p>{canal.snippet.description}</p> */}
 
                                 </div>
 
@@ -70,9 +71,23 @@ export default function Page(){
                                     className="  ml-14 flex flex-row gap-10 "
                                     >
                                         <li
-                                        className="border-b-4 border-[#aaa]"
-                                        >Vídeo</li>
-                                        <li>Sobre</li>
+                                        className={ changeBoolean === 'video'? `border-b-4 border-[#aaa] cursor-pointer`
+                                         :
+                                          `cursor-pointer`}
+                                            onClick={() => dispatch(setVideo())}
+                                        >
+                                            Vídeo
+                                        </li>
+
+                                        <li
+                                        className={ changeBoolean === 'sobre'? `border-b-4 border-[#aaa] cursor-pointer`
+                                         :
+                                          `cursor-pointer`}
+
+                                        onClick={() => dispatch(setSobre())}
+                                        >
+                                            Sobre
+                                        </li>
                                     </ul>
 
                                     <hr 
@@ -80,6 +95,25 @@ export default function Page(){
 
                                     />
                                 </nav>
+
+                                {
+                            changeBoolean === 'video' ? (
+                                <Video
+                                canal={canal.id}
+                                ></Video>
+                            ) : (
+                                <div
+                                className="m-4 p-4 pb-10 flex flex-col gap-5 text-center  border-b border-[#3f3f3f]
+                                md:text-start  md:ml-24 md:mx-96"
+                                >
+                                <p>Descrição</p>
+                                {canal.snippet.description.split('\n').map((line, index) => (
+                                    <p key={index}>{line}</p>
+                                ))}
+                                </div>
+                            )}
+
+
 
                         </section>
                     )

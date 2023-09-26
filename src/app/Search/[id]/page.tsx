@@ -43,9 +43,12 @@ export default function Page(){
                 className='flex md:justify-start justify-center  '
                 >
                 <Link
-                href={`${isChannel? `/Canal/${val.id.channelId}` : `/${val.id.videoId}`}`}
+              href={`${isChannel? `/Canal/${val.id.channelId}` : `/${val.id.videoId}`}`}
+
                 className=''
                 >
+
+                  
                 
                  <img 
                 src={val.snippet.thumbnails.high.url}
@@ -55,6 +58,11 @@ export default function Page(){
                 />
                 </Link>
 
+                </div>
+
+                {/* {!isChannel &&
+                <p>Vídeo mais recente do canal {d}</p>
+                } */}
                 
                 <div
                 className={`${isChannel? 
@@ -68,7 +76,8 @@ export default function Page(){
 
                   >
                   <Link
-                href={`${isChannel? `/Canal/${val.id.channelId}` : `/${val.id.videoId}`}`}
+                  href={`${isChannel? `/Canal/${val.id.channelId}` : `/${val.id.videoId}`}`}
+
                 
                 >
  
@@ -96,20 +105,15 @@ export default function Page(){
                   <p
                   className={`${isChannel? 'text-[#aaa] md:w-[500px] text-center md:text-start mx-12 md:mx-0 '
                    :
-                    'mt-5 text-[#aaa] md:w-[600px] mx-12 md:mx-0 ' }`}
+                    'mt-5 text-[#aaa] md:w-[600px] mx-12 md:mx-0  break-words' }`}
         
                   >{val.snippet.description}</p>
         
         
                   
                 </div> 
-                </div>
-
-            
         
-            {/* {!isChannel &&
-                <p>Vídeo mais recente do canal {d}</p>
-                } */}
+        
               </section>
             )
           })

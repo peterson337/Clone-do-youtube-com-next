@@ -7,6 +7,10 @@ import { RootState, AppDispatch } from '../../../Redux/store'; // Certifique-se 
 import { usePathname  } from 'next/navigation'
 import { Decrição } from "./hook/decrição";
 import { formatacaoDados } from '@/app/[id]/hook/formatacaoDados';
+import Link from 'next/link'
+
+import canal from '../../../Redux/features/canal';
+
 
 export default function Page() {
 
@@ -68,13 +72,18 @@ export default function Page() {
               <h2
               className='w-80  mt-5 mb-4 md:mb-0
                          md:w-[700px] md:ml-0 md:text-[22px] text-[19px]'
-              >{video.snippet.title}</h2>
+              >{video.snippet.title}
+              </h2>
 
                   <div
                   className='flex flex-row  md:gap-28 items-center gap-5  mb-5
                               md:ml-0 md:mb-0'
                   >
-              <p>{video.snippet.channelTitle}</p> 
+              <p>
+                <Link href={`/Canal/${video.snippet.channelId}`}>
+                {video.snippet.channelTitle}
+                </Link>
+              </p> 
               <button
               className='bg-[#f1f1f1] text-[#1d1d1d] p-2 rounded-full'
               >Inscreva-se            
@@ -87,61 +96,66 @@ export default function Page() {
                                                   {/* Descrição  */}
                   {
                     iSComentário?
-                  <div
-                  className='bg-[#272727] rounded-[20px] p-2
-                              md:p-12 md:w-[600px]'
+                  <section
+                  className='bg-[#272727] rounded-[20px] w-80 p-1  md:w-[600px] '
+
+
                   >
 
-                    <div
-                    className=''
-                    >
-                  <div
-                    className='flex flex-row md:gap-2 gap-1'
-                    >
+                
+                
+                      <div
+                      className='m-5 flex flex-col gap-2 md:flex-row'
+                      >
+                        <span
+                      className=' flex flex-row gap-2'
+
+                        >
 
                  <p>{formatViews(video.statistics.viewCount)}</p>   
                  visualizações 
-                <p> {formatDateTime(video.snippet.publishedAt)}</p>    
-                    </div>
+                        </span>
+                <p> {formatDateTime(video.snippet.publishedAt)}</p>     
+                      </div>
 
-                    <br />
 
                  
                     <div
-                    
+                        className='break-words m-5 flex flex-col gap-5'
                     >
-                    <p
-                    
-                    >
-                      {video.snippet.description}
-                    </p> 
+
+                          {video.snippet.description.split('\n').map((line : string, index : number) => (
+                                    <p key={index}
+                                    >
+                                      {line}
+                                    </p>
+                                ))}
+          
 
                     </div>
 
-                    </div>
                     
 
 
 
-                    <div
-                    className=' relative top-8 pb-9  
-                                md:relative md:top-10 md:pb-0'
-                    >
+                  
 
-                   <button
+                  <button
+                  className='m-5'
                    onClick={closeComentário}
                    >
                      Mostrar menos
-                    </button>
-
-                    </div>
+                    </button> 
 
 
 
-                  </div>
+
+                  </section>
+
+                                                  //!  Fim da  Descrição  
 
                     :
-                    <div
+                    <section
                     onClick={openComentário}
                     className='bg-[#272727] rounded-[20px] p-2
                     md:p-12 md:w-[600px] justify-start'
@@ -159,7 +173,7 @@ export default function Page() {
                       <br />
   
   
-                    </div>
+                    </section>
                   }
 
                

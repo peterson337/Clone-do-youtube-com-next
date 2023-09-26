@@ -4,7 +4,7 @@ import { BooleanCanal } from "../../Redux/types/canalBooleanTipagem";
 
 
 const initialState: BooleanCanal = {
-    isNav: 'video',
+    isNav: 'sobre',
 }
 
 

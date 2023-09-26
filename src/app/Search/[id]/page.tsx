@@ -43,7 +43,7 @@ export default function Page(){
                 className='flex md:justify-start justify-center  '
                 >
                 <Link
-                href={`/${isChannel? '/' :val.id.videoId}`}
+                href={`${isChannel? `/Canal/${val.id.channelId}` : `/${val.id.videoId}`}`}
                 className=''
                 >
                 
@@ -55,11 +55,6 @@ export default function Page(){
                 />
                 </Link>
 
-                </div>
-
-                {/* {!isChannel &&
-                <p>Vídeo mais recente do canal {d}</p>
-                } */}
                 
                 <div
                 className={`${isChannel? 
@@ -73,7 +68,7 @@ export default function Page(){
 
                   >
                   <Link
-                href={`/${isChannel? '/' :val.id.videoId}`}
+                href={`${isChannel? `/Canal/${val.id.channelId}` : `/${val.id.videoId}`}`}
                 
                 >
  
@@ -108,8 +103,13 @@ export default function Page(){
         
                   
                 </div> 
+                </div>
+
+            
         
-        
+            {/* {!isChannel &&
+                <p>Vídeo mais recente do canal {d}</p>
+                } */}
               </section>
             )
           })

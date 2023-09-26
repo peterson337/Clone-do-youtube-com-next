@@ -14,7 +14,7 @@ export type YoutubeVideoCanal = {
 
     contentDetails: {
         upload: {
-            videoId: "fsJ7YYqr8YU"
+            videoId: string;
         }
     }
 }
@@ -28,7 +28,7 @@ export type Thumbnail = {
 
 export  interface RequestState {
     status: 'idle' | 'loading' | 'succeeded' | 'failed';
-    data: YoutubeVideoCanal[] | null; 
+    dataVideo: YoutubeVideoCanal[] | null; 
     error: string | null;
     addCase: (state : RequestState, action : PayloadAction<YoutubeVideoCanal[]>) => void;
   }

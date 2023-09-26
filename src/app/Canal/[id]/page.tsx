@@ -7,6 +7,8 @@ import { setVideo, setSobre, changeBooleanCanal} from '../../../../Redux/feature
 import { useSelector, useDispatch } from 'react-redux';
 import { usePathname  } from 'next/navigation'
 import { CanalYoutube } from "../../../../Redux/types/canalTypes";
+import  {canalVideo}  from "../../../../Redux/features/canalVideoYoutube";
+
 import { Video } from "@/app/components/Video";
 
 
@@ -15,16 +17,19 @@ export default function Page(){
 
     const canalData = useSelector((state: RootState) => state.canal.data);
     const changeBoolean = useSelector((state: RootState) => state.changeNav.isNav);
+
     const dispatch = useDispatch<AppDispatch>();
     const pathname = usePathname();
     const id = pathname.slice(7);
 
+    
     useEffect(() => {
-         dispatch(canalEspecifico(id))
+        dispatch(canalEspecifico(id));
+        
+        
     }, [id])
 
-  
-
+    
     return(
         <main>
             {
@@ -36,7 +41,7 @@ export default function Page(){
                             <img 
                             src={canal.brandingSettings.image.bannerExternalUrl} 
                             alt={canal.snippet.title}
-                            className='bg-blue-500 w-[100%] md:h-52 h-32 object-cover'
+                            className=' w-[100%] md:h-52 h-32 object-cover'
                              />
 
                             </div>

@@ -9,6 +9,7 @@ export type YoutubeVideo = {
 
         videoId: string;
         kind: string;
+        channelId: string;
     }
 
     snippet: {

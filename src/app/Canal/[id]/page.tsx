@@ -8,8 +8,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { usePathname  } from 'next/navigation'
 import { CanalYoutube } from "../../../../Redux/types/canalTypes";
 import  {canalVideo}  from "../../../../Redux/features/canalVideoYoutube";
-
 import { Video } from "@/app/components/Video";
+import { formatarInscritos } from "./hook/formatarInscritos";
+import { Seta } from "@/app/components/Seta";
 
 
 
@@ -29,6 +30,7 @@ export default function Page(){
         
     }, [id])
 
+    const {format} = formatarInscritos();
     
     return(
         <main>
@@ -47,23 +49,64 @@ export default function Page(){
                             </div>
 
                             <div
-                            className="m-5 md:ml-32 flex flex-row gap-2 justify-center md:justify-start"
+                            className="m-5 md:ml-32 flex flex-row gap-2 justify-center md:justify-start "
                             >
+
+                                <div>
+
                                 <img 
-                                src={canal.snippet.thumbnails.default.url} 
+                                src={canal.snippet.thumbnails.high.url} 
                                 alt={canal.snippet.title}
-                                className='rounded-[50%] w-28 md:w-32'
+                                className='rounded-[50%] w-40 md:w-32'
                                 />
+                                </div>
 
                                 <div
                                 className="flex flex-col ml-5 "
                                 >
-                                <h2>{canal.snippet.title}</h2>
+                                <h2
+                                className=" text-2xl"
+                                >{canal.snippet.title}</h2>
+
+                                <div
+                                className="flex flex-wrap flex-row gap-3 text-[#a5aaaa] text-[14px] mb-2 "
+                                >
 
                                 <p>{canal.snippet.customUrl}</p>
-                                    <p>{canal.statistics.subscriberCount}</p>
+                                        
+                                    <p>{format(canal.statistics.subscriberCount)}</p>
+                                    <p>inscritos</p>
                                     <p>{canal.statistics.videoCount}</p>
+                                    <p>Vídeos</p>
+                                
+                                    
+                                </div>
+                              
+                                <div
+                                className="  text-[#a5aaaa]  hidden md:block md:w-[900px] "
+                                >
 
+                                    <span
+                                    
+                                    >
+                                {canal.snippet.description.split('\n').find((line, index) => (
+                                    <p 
+                                    key={index}>{line}</p>
+                                ))}
+
+                                    <button
+                                   className="relative top-[6px]"
+
+
+                                        onClick={() => dispatch(setSobre())}
+
+                                    >
+                                        <Seta></Seta>
+                                    </button>
+
+                                    </span>
+
+                                </div>
                                 </div>
 
 
@@ -111,10 +154,13 @@ export default function Page(){
                                 className="m-4 p-4 pb-10 flex flex-col gap-5 text-center  border-b border-[#3f3f3f]
                                 md:text-start  md:ml-24 md:mx-96"
                                 >
-                                <p>Descrição</p>
+                                 <p>Descrição</p>
                                 {canal.snippet.description.split('\n').map((line, index) => (
                                     <p key={index}>{line}</p>
-                                ))}
+                                ))} 
+
+                              
+
                                 </div>
                             )}
 

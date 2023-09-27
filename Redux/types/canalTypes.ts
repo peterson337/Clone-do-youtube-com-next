@@ -19,12 +19,12 @@ export type CanalYoutube = {
 }
 
 export type Statistics = {
-    subscriberCount: string;
+    subscriberCount: number;
     videoCount: string
 }
 
 export  type  thumbnails = {
-    default: {
+    high: {
     url: string;
     width: number;
     height: number;

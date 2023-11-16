@@ -15,7 +15,7 @@ import { customHook } from '../Search/[id]/hook/customHook';
 
 export const Main = () => {
     
-  const [youtube, setYoutube] = useState([]);
+  const router = useRouter()
 
   const dispatch = useDispatch<AppDispatch>();
   
@@ -33,6 +33,11 @@ export const Main = () => {
     dispatch(fetchYoutubeData(id)); // Substitua pela chave correta
   }, [dispatch]);
       //channelTitle
+
+      const selectVideo = (id : string) => {
+        router.push(`${id}`);
+      }
+
   return (
     <main
       className=''
@@ -67,8 +72,8 @@ export const Main = () => {
                          md:m-1 gap-3 md:mt-3 '  
             >
               
-              <Link
-              href={`/${video.id}`}
+              <button
+              onClick={ () => selectVideo(video.id) }
               >
 
               <img src={video.snippet.thumbnails.high.url} 
@@ -76,15 +81,16 @@ export const Main = () => {
               className='w-72 md:w-72  rounded-3xl '
               
                />
-              </Link>
+              </button>
 
             
          
-              <p>
-              <Link className="" href={`/${video.id}`}> 
-            <p className="w-80">{video.snippet.title}</p>
-            </Link>
-            </p>
+              
+
+            <button onClick={ () => selectVideo(video.id) }
+             className="w-80">
+              {video.snippet.title}
+              </button>
             
               <p
               className='text-[#aaa] mx-12 md:mx-0'

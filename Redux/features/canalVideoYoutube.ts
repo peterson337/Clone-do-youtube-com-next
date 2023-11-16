@@ -4,7 +4,7 @@ import { RequestState, YoutubeVideoCanal } from "../types/canalVideoTipagem";
 
 
 export const canalVideo = createAsyncThunk(
-  'canalData/canalEspecifico',
+  'videoCanalEspecifico/videoNoCanal',
   async (canal: string) => {
     const url = 'https://www.googleapis.com/youtube/v3/activities';
         const apiKey = process.env.YOUTUBE_API_KEY;
@@ -21,7 +21,7 @@ export const canalVideo = createAsyncThunk(
 )
 
  const returnVideoCanal = createSlice({
-  name: 'youtube',
+  name: 'videoCanal',
   initialState: {
     dataVideo: [],
       status: 'idle',

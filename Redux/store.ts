@@ -9,6 +9,7 @@ import SearchVideo  from "./features/video";
 import canalDoYoutube  from "./features/canal";
 import changeNavLink  from "./features/canalBoolean";
 import canalVideosSlice  from "./features/canalVideoYoutube";
+import assitirVideo   from "./features/assitirVideo";
 
 
 
@@ -21,7 +22,9 @@ export const store = configureStore({
     video: SearchVideo,   
     canal: canalDoYoutube,
     changeNav: changeNavLink,
-    canalVideos: canalVideosSlice
+    canalVideos: canalVideosSlice,
+    assistir: assitirVideo
+
   },
 });
 

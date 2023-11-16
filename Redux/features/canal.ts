@@ -22,7 +22,7 @@ export const canalEspecifico = createAsyncThunk(
 )
 
 const returnCanalEspecifico = createSlice({
-    name: 'youtube',
+    name: 'canal',
     initialState: {
         data: [],
         status: 'idle',

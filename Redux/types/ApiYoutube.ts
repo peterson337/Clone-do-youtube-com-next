@@ -25,7 +25,15 @@ export  interface RequestState {
     error: string | null;
     addCase: (state : RequestState, action : PayloadAction<YoutubeVideo[]>) => void;
   }
+export  interface RequestStateVideo {
+    status: 'idle' | 'loading' | 'succeeded' | 'failed';
+    dataVideo: YoutubeVideo[] | null; 
+    error: string | null;
+    addCase: (state : RequestState, action : PayloadAction<YoutubeVideo[]>) => void;
+  }
   
+
+  // 
   
   export type YoutubeResponse = {
     items: YoutubeVideo[];

@@ -2,7 +2,7 @@
 import React, {useState, useEffect, useRef } from 'react'
 import { YoutubeVideo, YoutubeResponse } from '../types/Youtube'; 
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchYoutubeData  } from '../../../Redux/features/slice';
+import { requisicao  } from '../../../Redux/features/assitirVideo';
 import { RootState, AppDispatch } from '../../../Redux/store'; // Certifique-se de que o caminho está correto
 import { usePathname  } from 'next/navigation'
 import { Decrição } from "./hook/decrição";
@@ -10,6 +10,8 @@ import { formatacaoDados } from '@/app/[id]/hook/formatacaoDados';
 import Link from 'next/link'
 
 import canal from '../../../Redux/features/canal';
+
+import axios  from "axios";
 
 
 export default function Page() {
@@ -30,15 +32,28 @@ export default function Page() {
       const {formatDateTime,
         formatViews} = formatacaoDados();
 
-      const youtubeData = useSelector((state: RootState) => state.youtube.data);
-      const loading = useSelector((state: RootState) => state.youtube.status === 'loading');
-      const erro = useSelector((state: RootState) => state.youtube.error);
+      const youtubeData = useSelector((state: RootState) => state.assistir.dataVideo);
+      console.log(youtubeData)
+      const loading = useSelector((state: RootState) => state.assistir.status === 'loading');
+      const erro = useSelector((state: RootState) => state.assistir.error);
       const dispatch = useDispatch<AppDispatch>();
       const pathname = usePathname();
-      const id = pathname.slice(1);
+      const idVideo = pathname.slice(1);
 
       useEffect(() => {
-        dispatch(fetchYoutubeData(id)); // Substitua pela chave correta
+        dispatch(requisicao(idVideo)); // Substitua pela chave correta
+          
+
+        const incricao = youtubeData.filter((val : YoutubeVideo) => val.snippet);
+        
+        //  axios.post('http://localhost:5000/historico', JSON.stringify( {incricao}), {
+          //   headers: {
+          //     'Content-Type': 'application/json'
+          // }
+          //  }).then((response : any) => {
+            //   console.log(response.data);
+            //  })
+        
       }, [dispatch]);
           //channelTitle
 

@@ -3,7 +3,7 @@ import { RootState } from '../store';
 import {RequestState, YoutubeVideo  } from "../types/ApiYoutube";
 
 export const videoEspecifico = createAsyncThunk(
-    'youtubeData/videoEspecifico',
+    'search/searchPesquisa',
     async (q: string) => {
       // 
       const url = 'https://www.googleapis.com/youtube/v3/search';
@@ -23,7 +23,7 @@ export const videoEspecifico = createAsyncThunk(
   );
 
   const returnVideoEspecifico = createSlice({
-    name: 'youtube',
+    name: 'search',
     initialState: {
       data: [],
       status: 'idle',

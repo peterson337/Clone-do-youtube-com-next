@@ -4,7 +4,6 @@ import { changeBoolean } from '../../../Redux/features/sidebarSlice';
 import { Home } from './Home';
 import { useRouter } from 'next/navigation'
 
-
 export const Sidebar = () => {
   const router = useRouter()
 
@@ -25,18 +24,20 @@ export const Sidebar = () => {
       <button
       onClick={toggleSidebar}
       >
+        <div className='border-b border-[#3f3f3f] mx-4'>
+
       <section
       className='flex flex-row gap-4 m-3 hover:bg-[#272727]/40 p-3  
-       rounded-xl cursor-pointer'
+       hover:rounded-xl cursor-pointer '
       >
 
-        
-     <Home></Home>
-      
 
+     <Home></Home>
 
         <p>Início</p>
       </section>
+        </div>
+
 
       </button>
 

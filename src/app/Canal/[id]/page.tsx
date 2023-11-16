@@ -17,6 +17,7 @@ import { Seta } from "@/app/components/Seta";
 export default function Page(){
 
     const canalData = useSelector((state: RootState) => state.canal.data);
+    const loading = useSelector((state: RootState) => state.canal.status === 'loading');
     const changeBoolean = useSelector((state: RootState) => state.changeNav.isNav);
 
     const dispatch = useDispatch<AppDispatch>();
@@ -35,6 +36,15 @@ export default function Page(){
     return(
         <main>
             {
+
+                            loading  ? (
+
+                                <section >
+                                <p className='text-2xl font-bold m-3'>Carregando...</p> 
+
+                                </section>
+                            )
+                            :
                 canalData.map((canal: CanalYoutube) => {
                     return(
                         <section

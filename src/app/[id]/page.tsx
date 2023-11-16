@@ -31,6 +31,8 @@ export default function Page() {
         formatViews} = formatacaoDados();
 
       const youtubeData = useSelector((state: RootState) => state.youtube.data);
+      const loading = useSelector((state: RootState) => state.youtube.status === 'loading');
+      const erro = useSelector((state: RootState) => state.youtube.error);
       const dispatch = useDispatch<AppDispatch>();
       const pathname = usePathname();
       const id = pathname.slice(1);
@@ -48,6 +50,19 @@ export default function Page() {
         className='flex justify-center md:justify-start '
         >
           {
+
+            loading  ? (
+              
+              <section className='flex text-center  justify-center items-center'>
+                    <p className='text-2xl font-bold m-3'>Carregando...</p> 
+
+                  </section>
+                )
+                :
+                erro ? (
+                 <p className='text-2xl font-bold m-3'>Ocorreu um ao consumir a api do youtube</p> 
+                )
+                :
             youtubeData.map((video: YoutubeVideo) => {
 
               const url = video.player.embedHtml.match(/src="(.*?)"/)[1];

@@ -14,11 +14,12 @@ export default function Page(){
   const pathname = usePathname();
   const d = pathname.slice(8);
   const data = useSelector((state : RootState) => state.video.data);
+  const loading = useSelector((state : RootState) => state.video.status === 'loading');
   const dispatch = useDispatch<AppDispatch>();
   const {formatDateTime} = customHook();
     useEffect(() => {
        dispatch(videoEspecifico(d))
-    }, [d])
+    }, [d, dispatch])
   
     
 
@@ -28,6 +29,11 @@ export default function Page(){
     >
       
      {
+
+        loading ? (
+            <p className='text-2xl font-bold m-3'>Carregando...</p>
+        )
+        :
           data.map((val : YoutubeVideo) => {
           const isChannel = val.id.kind === 'youtube#channel';
 

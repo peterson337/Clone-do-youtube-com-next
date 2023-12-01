@@ -8,6 +8,8 @@ import { RootState, AppDispatch } from '../../../../Redux/store'; // Certifique-
 import { YoutubeVideo } from "../../types/searchYoutube"; 
 import Link from '../../../../node_modules/next/link';
 import { customHook } from "./hook/customHook";
+import {Loading  } from "../../components/Loading";
+
 
 export default function Page(){
 
@@ -31,7 +33,7 @@ export default function Page(){
      {
 
         loading ? (
-            <p className='text-2xl font-bold m-3'>Carregando...</p>
+         <Loading></Loading>
         )
         :
           data.map((val : YoutubeVideo) => {

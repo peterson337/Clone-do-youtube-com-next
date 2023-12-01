@@ -13,6 +13,7 @@ import canal from '../../../Redux/features/canal';
 
 import axios  from "axios";
 
+import {Loading  } from "../components/Loading";
 
 export default function Page() {
 
@@ -33,7 +34,6 @@ export default function Page() {
         formatViews} = formatacaoDados();
 
       const youtubeData = useSelector((state: RootState) => state.assistir.dataVideo);
-      console.log(youtubeData)
       const loading = useSelector((state: RootState) => state.assistir.status === 'loading');
       const erro = useSelector((state: RootState) => state.assistir.error);
       const dispatch = useDispatch<AppDispatch>();
@@ -62,16 +62,12 @@ export default function Page() {
     
     >
         <section
-        className='flex justify-center md:justify-start '
         >
           {
 
             loading  ? (
               
-              <section className='flex text-center  justify-center items-center'>
-                    <p className='text-2xl font-bold m-3'>Carregando...</p> 
-
-                  </section>
+             <Loading></Loading>
                 )
                 :
                 erro ? (
@@ -85,6 +81,7 @@ export default function Page() {
               return( 
               <main
               key={video.id}
+              className='flex justify-center md:justify-start'
               >
 
               <section

@@ -11,7 +11,7 @@ import  {canalVideo}  from "../../../../Redux/features/canalVideoYoutube";
 import { Video } from "@/app/components/Video";
 import { formatarInscritos } from "./hook/formatarInscritos";
 import { Seta } from "@/app/components/Seta";
-
+import {Loading  } from "../../components/Loading";
 
 
 export default function Page(){
@@ -38,11 +38,7 @@ export default function Page(){
             {
 
                             loading  ? (
-
-                                <section >
-                                <p className='text-2xl font-bold m-3'>Carregando...</p> 
-
-                                </section>
+                               <Loading></Loading>
                             )
                             :
                 canalData.map((canal: CanalYoutube) => {

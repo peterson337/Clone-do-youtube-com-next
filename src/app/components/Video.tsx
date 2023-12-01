@@ -9,10 +9,13 @@ import {  YoutubeVideoCanal} from "../../../Redux/types/canalVideoTipagem";
 import { useSelector, useDispatch } from 'react-redux';
 import  {canalVideo}  from "../../../Redux/features/canalVideoYoutube";
 import Link from 'next/link'
+import { Loading } from "../components/Loading";
 
 export const Video = ({canal} : Props) => {
 
   const [video, setVideo] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
 
       useEffect(() => {
 
@@ -27,7 +30,8 @@ export const Video = ({canal} : Props) => {
           const jsonItems =  json.items;
 
           setVideo(jsonItems);
-          return jsonItems;
+
+          return setIsLoading(false);
         }
         
         getData();
@@ -36,43 +40,55 @@ export const Video = ({canal} : Props) => {
       
       return (
         <main
-    className='m-5 md:ml-28  ml-14 flex   2x1:flex-row gap-5 flex-wrap'
 
     >
+      
       {  
-      video.map((video: YoutubeVideoCanal) => {
-        const videoId = video.contentDetails?.upload?.videoId;
 
-      return(
-      <section
-    className='flex flex-col   gap-2 justify-center md:justify-start '
-      key={video.snippet.channelId}
-      >
-        <Link
-              href={ videoId?  `/${video.contentDetails.upload.videoId} ` : ``} 
+      isLoading?
 
+      <Loading></Loading>
+
+      :
+
+      <section className='m-5 md:ml-28  ml-14 flex   2x1:flex-row gap-5 flex-wrap'>
+
+        {
+        video.map((video: YoutubeVideoCanal) => {
+          const videoId = video.contentDetails?.upload?.videoId;
+  
+        return(
+        <section
+      className='flex flex-col   gap-2 justify-center md:justify-start '
+        key={video.snippet.channelId}
         >
-        <img src={video.snippet.thumbnails.high.url}
-        className='md:w-60 lg:w-60 w-60'
-        />
-        
-        <h2
-        className='w-60'
-        >{video.snippet.title}
-        </h2>
-        </Link>
-
-        {/* <div
-        className='flex flex-row'
-        >
-          5 mil visualizações há 4 semanas  
-        </div> */}
-   
-
-        </section>
-
-      )  
-      })
+          <Link
+                href={ videoId?  `/${video.contentDetails.upload.videoId} ` : ``} 
+  
+          >
+          <img src={video.snippet.thumbnails.high.url}
+          className='md:w-60 lg:w-60 w-60'
+          />
+          
+          <h2
+          className='w-60'
+          >{video.snippet.title}
+          </h2>
+          </Link>
+  
+          {/* <div
+          className='flex flex-row'
+          >
+            5 mil visualizações há 4 semanas  
+          </div> */}
+     
+  
+          </section>
+  
+        )  
+        })
+        }
+      </section>
       
          }
         

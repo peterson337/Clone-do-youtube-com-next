@@ -24,11 +24,13 @@ export default function RootLayout({
     <html lang="en">
       <Providers>
     
-      <body className={inter.className}>
+      <body className={inter.className}
+      >
 
         
       <Header/>
-        {children}</body>
+        {children}
+       </body>
 
       </Providers>
 

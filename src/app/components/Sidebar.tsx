@@ -24,7 +24,8 @@ export const Sidebar = () => {
       <button
       onClick={toggleSidebar}
       >
-        <div className='border-b border-[#3f3f3f] mx-4'>
+        {/* COR DA BORDA #3f3f3f */}
+        <div className=' mx-4'>
 
       <section
       className='flex flex-row gap-4 m-3 hover:bg-[#272727]/40 p-3  

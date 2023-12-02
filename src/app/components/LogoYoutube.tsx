@@ -3,7 +3,7 @@ import React from 'react'
 export const LogoYoutube = () => {
   return (
     <div>
-         <svg className="w-28  md:w-32" viewBox="0 0 90 20" focusable="false"
+         <svg  width="100"  className="" viewBox="0 0 90 20" focusable="false"
             
             >
             <svg className="" viewBox="0 0 90 20"

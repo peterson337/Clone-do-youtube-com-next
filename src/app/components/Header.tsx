@@ -46,14 +46,17 @@ export const Header = () => {
   
   return (
     <header
-    className='flex flex-col relative '
+    className='flex flex-col fixed w-full top-0'
     >
       
 
     <main
-    className='bg-black p-2 flex flex-row items-center gap-3'
+    className='bg-black p-2 flex flex-row items-center  md:px-10  justify-start  '
 
       >
+
+        <div className='flex flex-row items-center  w-[70%]  justify-between gap-3'>
+        <div className='flex flex-row items-center w-36 md:justify-between gap-3 md:gap-0'>
       <button
         onClick={toggleSidebar}
         >
@@ -68,8 +71,14 @@ export const Header = () => {
          <LogoYoutube/>
         </button>
 
+        </div>
+
 
       <Form></Form>
+
+        </div>
+
+
       
 
       {/* <button
@@ -88,27 +97,37 @@ export const Header = () => {
 
       {
         isSidebarOpen &&
-        <section
+        <main
         className='fixed z-50'
         >
-          <div
+          <section
           className="bg-[#0f0f0f]  md:w-60 w-48 h-screen border-b border-b-black 
-           fixed z-50"
+           fixed z-50 top-0"
       
           >
+
+          <div className='flex flex-row m-3 gap-5'>
+
+          <button onClick={toggleSidebar}><Menu></Menu></button>
+
+          <button onClick={toggleSidebarHome}><LogoYoutube/></button>
+
+          </div>
+
+
         <Sidebar
         ></Sidebar>
       
-          </div>
+          </section>
       
         <div
-        className="  bg-black/30 w-screen h-screen"
+        className="  bg-black/30 w-screen h-screen fixed z-40 top-0"
         onClick={toggleSidebar}
         >
       
         </div>
       
-        </section>
+        </main>
       
     
       

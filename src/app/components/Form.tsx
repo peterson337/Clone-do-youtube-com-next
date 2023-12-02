@@ -41,7 +41,7 @@ export const Form = () => {
     
     <input type="text"
     className='  w-36 p-1 rounded-full text-white bg-black outline-0 pl-5 border-2 border-[#303030]
-              md:ml-40 md:w-[600px] md:p-2
+               md:w-[600px] md:p-2
               '
     placeholder='Pesquisar'
     onChange={handlerInputSearch}

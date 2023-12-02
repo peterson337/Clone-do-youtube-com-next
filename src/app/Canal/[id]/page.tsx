@@ -44,13 +44,17 @@ export default function Page(){
                 canalData.map((canal: CanalYoutube) => {
                     return(
                         <section
-                        key={canal.id}>
+                        key={canal.id} className=''>
                             <div>
+
+                                <div  className='flex flex-col justify-center items-center'>
                             <img 
                             src={canal.brandingSettings.image.bannerExternalUrl} 
                             alt={canal.snippet.title}
-                            className=' w-[100%] md:h-52 h-32 object-cover'
+                            className=' md:w-9/12 w-full md:h-52 h-32 object-cover mt-12 md:mt-16 text-center rounded-xl'
                              />
+
+                                </div>
 
                             </div>
 

@@ -4,12 +4,16 @@ import LinearProgress from '@mui/material/LinearProgress';
 
 export const Loading = () => {
   return (
-    <section className='flex text-center flex-col  justify-center items-center gap-2'>
-    <p className='text-2xl font-bold m-3'>Carregando</p>
+    <section className='flex text-center flex-col  justify-center items-center gap-2 h-screen '>
 
-  <Box sx={{ width: '90%' }}>
- <LinearProgress />
+      <div className='flex flex-col w-72 md:w-[800px]  justify-center item-center  items-center gap-3'>
+    <p className='text-3xl font-bold  '>Carregando</p>
+
+  <Box sx={{ width: '100%' }} color="error">
+ <LinearProgress   className='p-2 rounded-full' color="error"/>
 </Box>
+
+      </div>
 
 </section>  )
 }

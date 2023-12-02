@@ -4,7 +4,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 
 export const Loading = () => {
   return (
-    <section className='flex text-center flex-col  justify-center items-center gap-2 h-screen '>
+    <section className='flex text-center flex-col  justify-center items-center gap-2 mt-32 '>
 
       <div className='flex flex-col w-72 md:w-[800px]  justify-center item-center  items-center gap-3'>
     <p className='text-3xl font-bold  '>Carregando</p>

@@ -59,7 +59,7 @@ export default function Page() {
 
     return (
     <main
-    
+    className='mt-16 md:ml-24'
     >
         <section
         >
@@ -81,7 +81,7 @@ export default function Page() {
               return( 
               <main
               key={video.id}
-              className='flex justify-center md:justify-start'
+              className='flex justify-center md:justify-start '
               >
 
               <section
@@ -89,7 +89,7 @@ export default function Page() {
               >
                                   
                 <iframe
-                className='w-[330px] h-80 md:w-[739px] md:h-[500px] rounded-[20px]'
+                className='w-[330px] h-80 md:w-[739px] md:h-[600px] rounded-[20px]'
                   src={url}
                  
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share;"

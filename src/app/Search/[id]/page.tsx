@@ -27,7 +27,7 @@ export default function Page(){
 
   return (
     <main
-    className=' md:flex md:flex-col  md:mt-5 mt-10 '
+    className=' md:flex md:flex-col  md:mt-7 mt-10 '
     >
       
      {
